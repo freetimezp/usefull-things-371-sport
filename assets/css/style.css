@@ -97,12 +97,90 @@ button {
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
+.main-logo {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    color: var(--title-color);
+    font-family: var(--second-font);
+    font-size: var(--h3-font-size);
+}
+
+.main-logo-img {
+    width: 20px;
+}
+
+.button {
+    display: inline-block;
+    background-color: var(--first-color);
+    padding: 1.25rem 2rem;
+    color: var(--title-color-black);
+    font-weight: var(--font-semibold);
+    transition: backgroud-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--first-color-dark);
+}
 
 /*=============== LAYOUT ===============*/
+.container {
+    max-width: 1124px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+}
 
 /*=============== HEADER & NAV ===============*/
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav,
+.nav-list {
+    display: flex;
+    align-items: center;
+}
+
+.nav {
+    justify-content: space-between;
+    height: 5.5rem;
+}
+
+.nav-list {
+    column-gap: 4rem;
+}
+
+.nav-link,
+.nav-close,
+.nav-toggle {
+    color: var(--title-color);
+}
+
+.nav-close,
+.nav-toggle {
+    display: none;
+}
+
+.nav-link {
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--first-color);
+}
+
+.nav-button {
+    background-color: var(--title-color);
+}
 
 /* Active link */
+.active-link {
+    color: var(--first-color);
+}
 
 /* Change background header */
 
