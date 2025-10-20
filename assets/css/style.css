@@ -235,6 +235,19 @@ button {
 }
 
 /*=============== LOGOS ===============*/
+.logos {
+    padding-block: 3.5rem 1rem;
+}
+
+.logos-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    justify-content: center;
+}
+
+.logo-img {
+    width: 190px;
+}
 
 /*=============== CHOOSE US ===============*/
 
