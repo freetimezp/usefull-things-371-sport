@@ -147,6 +147,20 @@ button {
     margin-bottom: 3rem;
 }
 
+.section-title {
+    font-size: var(--h1-font-size);
+    margin-bottom: 2rem;
+}
+
+.section-title::before {
+    content: attr(data-title);
+    display: block;
+    color: var(--first-color);
+    font-size: var(--h3-font-size);
+    transform: rotate(-2deg);
+    margin-bottom: 0.75rem;
+}
+
 /*=============== LAYOUT ===============*/
 .container {
     max-width: 1124px;
@@ -250,6 +264,44 @@ button {
 }
 
 /*=============== CHOOSE US ===============*/
+.choose-container,
+.choose-data {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.choose-container {
+    align-items: center;
+    column-gap: 8rem;
+}
+
+.choose-timing {
+    background-color: var(--first-color);
+    padding: 1.5rem;
+}
+
+.choose-timing-title,
+.choose-time {
+    color: var(--title-color-black);
+    text-align: center;
+}
+
+.choose-timing-title {
+    font-size: var(--h3-font-size);
+    margin-bottom: 0.5rem;
+}
+
+.choose-data {
+    row-gap: 2.5rem;
+}
+
+.choose-no {
+    font-size: var(--h3-font-size);
+    margin-bottom: 0.25rem;
+}
+
+.choose-data-subtitle {
+    font-size: var(--small-font-size);
+}
 
 /*=============== PROGRAM ===============*/
 
