@@ -161,6 +161,10 @@ button {
     margin-bottom: 0.75rem;
 }
 
+.title-center {
+    text-align: center;
+}
+
 /*=============== LAYOUT ===============*/
 .container {
     max-width: 1124px;
@@ -304,8 +308,47 @@ button {
 }
 
 /*=============== PROGRAM ===============*/
+.program-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-top: 4rem;
+}
 
-/* Card hover */
+.program-card {
+    flex: 1 1 0;
+    min-width: 305px;
+    max-width: calc(33.33% - 1rem);
+    background-color: var(--container-color);
+    padding: 2rem;
+    transition: background 0.3s;
+}
+
+.program-no {
+    font-family: var(--second-font);
+    font-size: var(--h1-font-size);
+    color: var(--first-color);
+}
+
+.program-title {
+    font-size: var(--h3-font-size);
+    margin-block: 1rem;
+}
+
+.program-no,
+.program-title,
+.program-description {
+    transition: color 0.3s ease;
+}
+
+.program-card:hover {
+    background-color: var(--first-color);
+}
+
+.program-card:hover :is(.program-no, .program-title, .program-description) {
+    color: var(--title-color-black);
+}
 
 /*=============== PRICING ===============*/
 
