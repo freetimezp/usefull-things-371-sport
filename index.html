@@ -224,7 +224,38 @@
             </section>
 
             <!--=============== CALCULATE ===============-->
-            <section class="calculate section"></section>
+            <section class="calculate section">
+                <div class="calculate-container container grid">
+                    <div class="calculate-content">
+                        <h1 class="section-title" data-title="BMI Calculator">Calculate Your BMI</h1>
+
+                        <p class="description">
+                            The body mass index (BMI) calculator calculates body mass index from your weight and height.
+                        </p>
+
+                        <form class="calculate-form grid" id="calculate-form">
+                            <div class="calculate-box">
+                                <input type="number" class="calculate-input" placeholder="Height" id="calculate-cm" />
+                                <label for="" class="calculate-label">cm</label>
+                            </div>
+                            <div class="calculate-box">
+                                <input type="number" class="calculate-input" placeholder="Weight" id="calculate-kg" />
+                                <label for="" class="calculate-label">kg</label>
+                            </div>
+
+                            <button type="submit" class="button button-flex">
+                                Calculate Now <i class="ri-arrow-right-line"></i>
+                            </button>
+                        </form>
+
+                        <p class="calculate-message" id="calculate-message"></p>
+                    </div>
+
+                    <div class="calculate-image">
+                        <img src="./assets/images/calculate-img.png" alt="" class="calculate-img" />
+                    </div>
+                </div>
+            </section>
 
             <!--=============== MARQUEE ===============-->
             <section class="marquee section"></section>

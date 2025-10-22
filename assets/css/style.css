@@ -414,6 +414,75 @@ button {
 }
 
 /*=============== CALCULATE ===============*/
+.calculate-container {
+    grid-template-columns: 7fr 5fr;
+    align-items: center;
+    column-gap: 8rem;
+}
+
+.calculate-form {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.calculate-box {
+    position: relative;
+    border: 2px solid var(--text-color);
+}
+
+.calculate-input {
+    width: 100%;
+    padding: 1.25rem 3.5rem 1.25rem 1.5rem;
+}
+
+.calculate-label {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.25rem;
+    color: var(--title-color);
+}
+
+.calculate-form .button {
+    grid-column: 1/3;
+    justify-content: center;
+}
+
+.calculate-input::-webkit-inner-spin-button,
+.calculate-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.calculate-input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.calculate-message {
+    position: absolute;
+    transform: translateY(1rem);
+}
+
+.calculate-image {
+    position: relative;
+    border-radius: 0 0 100vw 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.calculate-image::before {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    aspect-ratio: 1/1;
+    background-color: var(--first-color);
+    border-radius: 50%;
+}
+
+.calculate-img {
+    position: relative;
+    z-index: 10;
+    width: clamp(13rem, 6.6934rem + 17.5182rem, 19rem);
+}
 
 /*=============== MARQUEE ===============*/
 
