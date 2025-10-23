@@ -484,6 +484,14 @@ button {
     width: clamp(13rem, 6.6934rem + 17.5182rem, 19rem);
 }
 
+.color-red {
+    color: red;
+}
+
+.color-first {
+    color: var(--first-color);
+}
+
 /*=============== MARQUEE ===============*/
 
 /* Animation */
