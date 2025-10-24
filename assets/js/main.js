@@ -83,3 +83,17 @@ function calculateBmi(e) {
 }
 
 calculateForm.addEventListener("submit", calculateBmi);
+
+//scroll reveal
+const sr = ScrollReveal({
+    origin: "top",
+    distance: "60px",
+    duration: 2500,
+    delay: 400,
+});
+
+sr.reveal(`.home-data, .footer-container, .footer-group`);
+sr.reveal(`.home-img`, { delay: 700, origin: "bottom" });
+sr.reveal(`.logo-img, .program-card, .pricing-card`, { interval: 200 });
+sr.reveal(`.choose-group, .calculate-content`, { origin: "left" });
+sr.reveal(`.choose-content, .calculate-image`, { origin: "right" });
