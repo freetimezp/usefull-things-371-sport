@@ -17,6 +17,29 @@ function scrollupShow() {
 
 window.addEventListener("scroll", scrollupShow);
 
+//active menu link
+const sections = document.querySelectorAll("section[id]");
+
+const scrollActive = () => {
+    const scrollY = window.pageYOffset;
+
+    sections.forEach((current) => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 58;
+        const sectionId = current.getAttribute("id");
+
+        const sectionClass = document.querySelector(".nav-menu a[href*=" + sectionId + "]");
+
+        if (scrollY >= sectionTop && scrollY <= sectionTop + sectionHeight) {
+            sectionClass.classList.add("active-link");
+        } else {
+            sectionClass.classList.remove("active-link");
+        }
+    });
+};
+
+window.addEventListener("scroll", scrollActive);
+
 //calculate bmi
 const calculateForm = document.getElementById("calculate-form");
 const calculateCm = document.getElementById("calculate-cm");
