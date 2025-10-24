@@ -1,3 +1,22 @@
+//bg header
+
+function scrollHeader() {
+    const header = document.getElementById("header");
+
+    this.scrollY >= 50 ? header.classList.add("bg-header") : header.classList.remove("bg-header");
+}
+
+window.addEventListener("scroll", scrollHeader);
+
+//scrollup
+function scrollupShow() {
+    const scrollup = document.getElementById("scrollup");
+
+    this.scrollY >= 50 ? scrollup.classList.add("show-scrollup") : scrollup.classList.remove("show-scrollup");
+}
+
+window.addEventListener("scroll", scrollupShow);
+
 //calculate bmi
 const calculateForm = document.getElementById("calculate-form");
 const calculateCm = document.getElementById("calculate-cm");
