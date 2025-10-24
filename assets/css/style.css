@@ -531,6 +531,94 @@ button {
 }
 
 /*=============== FOOTER ===============*/
+.footer {
+    padding-bottom: 3rem;
+}
+
+.footer-container,
+.footer-content {
+    grid-template-columns: repeat(var(--column), max-content);
+}
+
+.footer-container {
+    --column: 2;
+    justify-content: space-between;
+}
+
+.footer-content {
+    --column: 3;
+    column-gap: 5rem;
+}
+
+.footer-logo {
+    margin-bottom: 1.5rem;
+}
+
+.footer-description {
+    margin-bottom: 2rem;
+}
+
+.footer-form,
+.footer-socials {
+    display: flex;
+}
+
+.footer-form {
+    gap: 1.25rem;
+}
+
+.footer-input {
+    padding: 1.25rem 3.5rem 1.25rem 1.5rem;
+    border: 2px solid var(--text-color);
+}
+
+.footer-title {
+    font-size: var(--h3-font-size);
+    margin-bottom: 1.5rem;
+}
+
+.footer-links li:not(:last-child) {
+    margin-bottom: 0.75rem;
+}
+
+.footer-link {
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: var(--first-color);
+}
+
+.footer-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 7rem;
+}
+
+.footer-copy {
+    font-size: var(--small-font-size);
+}
+
+.footer-socials {
+    column-gap: 1.25rem;
+}
+
+.footer-social-link {
+    display: inline-flex;
+    padding: 0.35rem;
+    background-color: var(--first-color);
+    border-radius: 50%;
+    font-size: 1.25rem;
+    color: var(--title-color-black);
+    transition: background 0.3s, transform 0.3s;
+}
+
+.footer-social-link:hover {
+    background-color: var(--first-color-dark);
+    transform: scale(1.1);
+}
 
 /*=============== SCROLL BAR ===============*/
 
