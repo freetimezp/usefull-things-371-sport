@@ -9,15 +9,6 @@ const lenis = new Lenis({
     infinite: false,
 });
 
-function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-}
-
-requestAnimationFrame(raf);
-
-lenis.on("scroll", ScrollTrigger.update);
-
 gsap.ticker.add((time) => {
     lenis.raf(time * 1000);
 });
@@ -25,6 +16,8 @@ gsap.ticker.add((time) => {
 gsap.ticker.lagSmoothing(0);
 
 lenis.on("scroll", ({ velocity }) => {
+    ScrollTrigger.update();
+
     gsap.to(".glow-ring", {
         rotate: `+=${velocity * 5}`,
         duration: 1,
@@ -32,10 +25,13 @@ lenis.on("scroll", ({ velocity }) => {
 });
 
 // header
+const header = document.querySelector(".header");
+
 ScrollTrigger.create({
-    start: 100,
-    onUpdate: (self) => {
-        document.querySelector(".header").classList.toggle("bg-header", self.scroll() > 100);
+    start: "top -100",
+    toggleClass: {
+        targets: header,
+        className: "bg-header",
     },
 });
 
@@ -147,19 +143,6 @@ tl.from(".header", {
         "-=.8"
     );
 
-gsap.utils.toArray("section").forEach((section) => {
-    gsap.from(section.children, {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-
-        scrollTrigger: {
-            trigger: section,
-            start: "top 75%",
-        },
-    });
-});
-
 gsap.to(".hero-image", {
     y: -20,
     duration: 3,
@@ -221,22 +204,20 @@ gsap.to(".hero-word", {
 });
 
 //partners
-gsap.to(".partners-slider", {
-    xPercent: -10,
-    ease: "none",
-    duration: 20,
-    repeat: -1,
-});
+const slider = document.querySelector(".partners-slider");
 
-gsap.from(".partner-item", {
-    y: 60,
-    opacity: 0,
-    stagger: 0.08,
+window.addEventListener("load", () => {
+    gsap.set(slider, { x: 0 });
 
-    scrollTrigger: {
-        trigger: ".partners",
-        start: "top 80%",
-    },
+    gsap.to(slider, {
+        x: () => -slider.scrollWidth / 2,
+        duration: 30,
+        ease: "none",
+        repeat: -1,
+        modifiers: {
+            x: gsap.utils.unitize((x) => parseFloat(x) % (slider.scrollWidth / 2)),
+        },
+    });
 });
 
 //choose
@@ -267,4 +248,190 @@ gsap.to(".choose-badge", {
         trigger: ".choose",
         start: "top 70%",
     },
+});
+
+//pricing
+gsap.to(".pricing .section-title", {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: "power3.out",
+});
+
+gsap.from(".pricing-card", {
+    opacity: 0,
+    y: 80,
+    scale: 0.9,
+    duration: 1,
+    ease: "power3.out",
+    stagger: 0.15,
+    scrollTrigger: {
+        trigger: ".pricing-container",
+        start: "top 75%",
+    },
+});
+
+gsap.to(".pricing-card-active", {
+    scale: 1.1,
+    boxShadow: "0 30px 80px rgba(0,0,0,0.4)",
+    overwrite: "auto",
+    scrollTrigger: {
+        trigger: ".pricing-card-active",
+        start: "top 60%",
+        end: "bottom 40%",
+        scrub: true,
+    },
+});
+
+gsap.utils.toArray(".pricing-card").forEach((card, i) => {
+    gsap.to(card, {
+        y: i % 2 === 0 ? -10 : 10,
+        duration: 2.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+    });
+});
+
+//calculate
+gsap.from(".calculate-content", {
+    opacity: 0,
+    x: -80,
+    duration: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+        trigger: ".calculate",
+        start: "top 80%",
+    },
+});
+
+gsap.from(".calculate-image", {
+    opacity: 0,
+    x: 80,
+    scale: 0.9,
+    duration: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+        trigger: ".calculate",
+        start: "top 80%",
+    },
+});
+
+gsap.to(".calculate-img", {
+    y: -5,
+    scale: 1.07,
+    duration: 2.5,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut",
+});
+
+document.querySelectorAll(".calculate-input").forEach((input) => {
+    input.addEventListener("focus", () => {
+        gsap.to(input.parentElement, {
+            scale: 1.03,
+            borderColor: "#ff5a3c",
+            duration: 0.3,
+        });
+    });
+
+    input.addEventListener("blur", () => {
+        gsap.to(input.parentElement, {
+            scale: 1,
+            borderColor: "rgba(255,255,255,0.2)",
+            duration: 0.3,
+        });
+    });
+});
+
+const btn = document.querySelector(".calculate-form .button");
+
+btn.addEventListener("mouseenter", () => {
+    gsap.to(btn, { scale: 1.05, duration: 0.5, overwrite: true });
+});
+
+btn.addEventListener("mouseleave", () => {
+    gsap.to(btn, { scale: 1, duration: 0.3, overwrite: true });
+});
+
+const form = document.getElementById("calculate-form");
+
+const popup = document.getElementById("popup");
+const popupMessage = document.getElementById("popup-message");
+const popupClose = document.getElementById("popup-close");
+
+function showPopup(message, type = "success") {
+    popupMessage.textContent = message;
+
+    // color based on type
+    if (type === "error") {
+        popupMessage.style.color = "#ff4d4d";
+    } else if (type === "warn") {
+        popupMessage.style.color = "#ffb84d";
+    } else {
+        popupMessage.style.color = "#00ff99";
+    }
+
+    popup.classList.add("active");
+
+    gsap.fromTo(
+        ".popup-content",
+        { scale: 0.7, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.3, ease: "power3.out" }
+    );
+}
+
+popupClose.addEventListener("click", () => {
+    gsap.to(".popup-content", {
+        scale: 0.7,
+        opacity: 0,
+        duration: 0.2,
+        onComplete: () => popup.classList.remove("active"),
+    });
+});
+
+popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+        popupClose.click();
+    }
+});
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const heightInput = document.getElementById("calculate-cm");
+    const weightInput = document.getElementById("calculate-kg");
+
+    const height = parseFloat(heightInput.value);
+    const weight = parseFloat(weightInput.value);
+
+    if (!height || !weight) {
+        showPopup("Please enter valid values ⚠️", "error");
+        return;
+    }
+
+    // BMI formula: weight (kg) / (height in meters)^2
+    const heightM = height / 100;
+    const bmi = (weight / (heightM * heightM)).toFixed(1);
+
+    let message = "";
+    let type = "success";
+
+    if (bmi < 18.5) {
+        message = `Your BMI is ${bmi} — Underweight`;
+        type = "warn";
+    } else if (bmi < 25) {
+        message = `Your BMI is ${bmi} — Healthy 💪`;
+        type = "success";
+    } else if (bmi < 30) {
+        message = `Your BMI is ${bmi} — Overweight`;
+        type = "warn";
+    } else {
+        message = `Your BMI is ${bmi} — Obese`;
+        type = "error";
+    }
+
+    showPopup(message, type);
+
+    form.reset();
 });
