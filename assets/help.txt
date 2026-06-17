@@ -69,3 +69,27 @@ Outdoor & Online Trainers
 Subscribe for company updates below.
 
 &#169; Copyright Gym. All rights reserved.
+
+
+
+
+
+
+js
+
+Please enter valid values ⚠️
+
+Your BMI is — Underweight
+
+Your BMI is — Healthy 💪
+
+Your BMI is — Overweight
+
+Your BMI is — Obese
+
+
+
+
+
+
+
