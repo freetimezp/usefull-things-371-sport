@@ -50,7 +50,7 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 body,
@@ -1275,7 +1275,7 @@ html.lenis body {
         top: 0;
         right: -100%;
         width: 280px;
-        height: 100%;
+        height: auto;
         background: rgba(15, 15, 15, 0.95);
         backdrop-filter: blur(20px);
         padding: 6rem 2rem;
@@ -1424,6 +1424,12 @@ html.lenis body {
 
     .footer-socials {
         justify-content: center;
+    }
+
+    .hero-word,
+    .choose-word,
+    .partners-bg {
+        letter-spacing: 0;
     }
 }
 
